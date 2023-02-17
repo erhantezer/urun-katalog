@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import CardItem from "../pages/CardItem";
 
 const AppRouter = () => {
   return (
@@ -13,7 +14,7 @@ const AppRouter = () => {
         <Route path="/" element={<Home/>} />
         <Route path="register" element={<Register/>} />
         <Route path="login" element={<Login/>} />
-        <Route />
+        <Route path="card/:id" element={<CardItem/>} />
       </Routes>
     </BrowserRouter>
   );
