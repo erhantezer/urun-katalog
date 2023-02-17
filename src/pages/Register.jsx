@@ -1,6 +1,7 @@
 import React from "react";
 
 const Register = () => {
+  
   return (
     <section className="">
       <div className="container  py-10 h-full">
