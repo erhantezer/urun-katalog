@@ -11,9 +11,13 @@ export const likeSlice = createSlice({
         likeProduct: (state, action) => {
             state.likes.push(action.payload)
         },
+
         unLikeProduct: (state, action) => {
             state.likes= state.likes.filter((l) => l!== action.payload)
         },
         
+        deleteLike:(state) => {
+            state.likes = [];
+        },
 }
 })
