@@ -15,9 +15,13 @@ export const likeSlice = createSlice({
         unLikeProduct: (state, action) => {
             state.likes= state.likes.filter((l) => l!== action.payload)
         },
-        
+
         deleteLike:(state) => {
             state.likes = [];
         },
 }
-})
+});
+
+export const { likeProduct, unLikeProduct, deleteLike } = likeSlice.actions;
+
+export default likeSlice.reducer;
