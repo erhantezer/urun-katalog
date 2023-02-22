@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRouter = () => {
-    const currentUser = true;
+    const currentUser = sessionStorage.getItem("token")
     return currentUser ? <Outlet /> : <Navigate to="/login" replace />
 };
 
