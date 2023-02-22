@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 
 
 const Login = () => {
+  const [remember, setRemember] = useState(false)
+  const [cookie, setCookie] = useCookies(["remember"])
+  if (remember) {
+    setCookie('remember', 'true');
+  } else {
+    setCookie('remember', 'false');
+  }
+
+
+
   return (
     <section className="">
       <div className="container  py-10 h-full">
