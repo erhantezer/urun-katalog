@@ -10,7 +10,6 @@ const Register = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
   const [cookie, setCookie] = useCookies(["remember"])
   const navigate = useNavigate()
 
@@ -47,7 +46,7 @@ const Register = () => {
 
 
   const fetchToken = (e) => {
-    
+
     axios
       .post("https://assignment-api.piton.com.tr/api/v1/user/register", {
         name: name,
@@ -63,8 +62,8 @@ const Register = () => {
       .catch((err) => {
         console.log("Bad REQUEST", err);
       });
-    }
-        
+  }
+
 
 
 
@@ -108,7 +107,7 @@ const Register = () => {
               <div className="mb-6">
                 <div className="invalid-feedback">{(errors.password)?.message}</div>
                 <input
-                {...register("password")}
+                  {...register("password")}
                   name="password"
                   type="password"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -117,7 +116,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex justify-between items-center mb-6">
-                
+
 
               </div>
               {/* Submit button */}
