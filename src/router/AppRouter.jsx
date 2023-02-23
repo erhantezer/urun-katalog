@@ -8,6 +8,7 @@ import CardItem from "../pages/CardItem";
 import PrivateRouter from "./PrivateRouter";
 
 const AppRouter = () => {
+  
   return (
     <BrowserRouter>
       <Navbar />
