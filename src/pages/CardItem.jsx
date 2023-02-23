@@ -1,6 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const CardItem = () => {
+    const {id} = useParams();
+    
     return (
         <div className="flex justify-center" >
             <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
