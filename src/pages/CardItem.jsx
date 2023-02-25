@@ -1,9 +1,37 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CardItem = () => {
+    const [veri, setVeri] = useState([]);
     const {id} = useParams();
+    const token = sessionStorage.get("token");
+    const navigate = useNavigate()
     
+const getVeri = async () => {
+    try {
+        const { data } = await axios.get(`https://assignment-api.piton.com.tr/api/v1/product/get/${id}`, {
+        headers: {
+            Authorization: 'Bearer ' + token,
+            "access-token": token
+        }
+    });
+    setVeri(data.product)
+    } catch (error) {
+        console.log(error)
+    }
+
+    if(!token) {
+        navigate("/login")
+    } 
+        
+}
+
+    useEffect(() => {
+        getVeri()
+    }, []);
+
+
     return (
         <div className="flex justify-center" >
             <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">

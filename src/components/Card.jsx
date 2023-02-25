@@ -18,6 +18,7 @@ const Card = ({ id, name, image, description }) => {
 
 
     console.log(defaultImage)
+    
     const handleClick = () => {
         navigate(`card/${id}`)
     }
