@@ -5,20 +5,20 @@ import { useNavigate } from "react-router-dom";
 const defaultImage = "https://picsum.photos/500/300?random=1";
 
 const Card = ({ id, name, image, description }) => {
-    const {likes} = useSelector(state => state.likes)
+    // const {likes} = useSelector(state => state.likes)
     const navigate = useNavigate()
     const [show, setShow] = useState(false);
-    const [like, setLike] = useState(false)
+    // const [like, setLike] = useState(false)
 
-    useEffect(() => {
-        if(likes.includes(id)){
-            setLike(true)
-        }
-    },[id,likes])
+    // useEffect(() => {
+    //     if(likes.includes(id)){
+    //         setLike(true)
+    //     }
+    // },[id,likes])
 
 
     console.log(defaultImage)
-    
+
     const handleClick = () => {
         navigate(`card/${id}`)
     }
