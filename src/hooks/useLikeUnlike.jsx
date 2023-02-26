@@ -8,7 +8,7 @@ import { likeProduct, unLikeProduct } from "../features/likeSlice";
 
 
 const useLikeUnlike = () => {
-    const {products} = useProducts()
+    const { products } = useProducts()
     const { likes } = useSelector(state => state.likes)
     const dispatch = useDispatch()
     const [like, setLike] = useState(false)
@@ -18,7 +18,7 @@ const useLikeUnlike = () => {
             setLike(true)
         }
 
-    }, [likes,products])
+    }, [likes, products])
 
 
     const likeUnlike = (id) => {
@@ -26,30 +26,30 @@ const useLikeUnlike = () => {
 
         if (like) {
             //unlike apisi
-            axios.post("https://assignment-api.piton.com.tr/api/v1/product/unlike", { productId: id }, {
+            const { data } = axios.post("https://assignment-api.piton.com.tr/api/v1/product/unlike", { productId: id }, {
                 headers: {
                     Authorization: 'Bearer ' + token,
                     'access-token': token
                 }
-            }).then(response => {
-                setLike(false)
-                dispatch(unLikeProduct(id))
+            })
+            setLike(false)
+            dispatch(unLikeProduct(data.id))
 
-            })
+
         } else {
-            axios.post("https://assignment-api.piton.com.tr/api/v1/product/like", { productId: id }, {
+            const { data } = axios.post("https://assignment-api.piton.com.tr/api/v1/product/like", { productId: id }, {
                 headers: {
                     Authorization: 'Bearer ' + token,
                     'access-token': token
                 }
-            }).then(response => {
-                setLike(true)
-                dispatch(likeProduct(id))
             })
+            setLike(true)
+            dispatch(likeProduct(data.id))
+
         }
     }
 
-    return {like, likeUnlike }
+    return { like, likeUnlike }
 };
 
 export default useLikeUnlike;
