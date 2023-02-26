@@ -47,21 +47,16 @@ const Register = () => {
 
   const fetchToken = (e) => {
 
-    axios
+    const {data} = axios
       .post("https://assignment-api.piton.com.tr/api/v1/user/register", {
         name: name,
         password: password,
         email: email,
       })
-      .then((res) => {
-        console.log("res", res.data);
-        sessionStorage.setItem("token", res.data.token);
-        setCookie("remember", "false")
-        navigate('/')
-      })
-      .catch((err) => {
-        console.log("Bad REQUEST", err);
-      });
+        console.log("res", data);
+        sessionStorage.setItem("token", data.token);
+        setCookie("remember", "false");
+        navigate('/');
   }
 
 
