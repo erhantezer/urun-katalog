@@ -11,7 +11,8 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
-  const fetchToken = () => {
+  const fetchToken = (e) => {
+    e.preventDefault()
     if (remember) {
       setCookie('remember', 'true');
     } else {

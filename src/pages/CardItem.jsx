@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const CardItem = () => {
     const [veri, setVeri] = useState([]);
     const {id} = useParams();
-    // console.log(JSON.parse(sessionStorage.get("token")))
+    console.log(sessionStorage.getItem("token"))
     
     const navigate = useNavigate()
     
@@ -13,10 +13,11 @@ const getVeri = async () => {
     try {
         const { data } = await axios.get(`https://assignment-api.piton.com.tr/api/v1/product/get/${id}`, {
         headers: {
-                Authorization: 'Bearer ' + sessionStorage.get("token"),
-                "access-token": sessionStorage.get("token")
+                Authorization: 'Bearer ' + sessionStorage.getItem("token"),
+                "access-token": sessionStorage.getItem("token")
         }
     });
+    console.log(data.product)
     setVeri(data.product)
     } catch (error) {
         console.log(error)
@@ -32,9 +33,9 @@ const getVeri = async () => {
         getVeri()
     }, []);
 
-const {name,price,image,description,likes} = veri
+const {id:ipId,name,price,image,description,likes} = veri
     return (
-        <div className="flex justify-center" >
+        <div className="flex justify-center" key={ipId}>
             <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
                 <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src={image} alt="" />
                 <div className="p-6 flex flex-col justify-start">
@@ -43,7 +44,7 @@ const {name,price,image,description,likes} = veri
                         {description}
                     </p>
                     <p className="text-gray-600 text-xs">{price}</p>
-                    {likes}
+                    {/* {likes} */}
                 </div>
             </div>
         </div >
